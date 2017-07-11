@@ -59,8 +59,6 @@ AX_CHECK_ENABLE_DEBUG([yes], , [UNUSED_NDEBUG], [$is_release])
 
 AC_PROG_CC_C99
 
-AC_DEFINE_UNQUOTED(SYSCONFDIR, "`eval echo $sysconfdir`", [Location of system configuration files])
-
 # For strnlen() and vasprintf().
 AC_USE_SYSTEM_EXTENSIONS
 
@@ -122,6 +120,7 @@ AM_PROG_AR
 
 AX_FLAGS_WARN_ALL
 AX_CHECK_COMPILE_FLAG([-Wunused-value], [AX_APPEND_FLAG([-Wunused-value], [AM_CFLAGS])])
+AX_CHECK_COMPILE_FLAG([-DSYSCONFDIR=$(sysconfdir)], [AX_APPEND_FLAG([-DSYSCONFDIR=$(sysconfdir)], [AM_CFLAGS])])
 AC_SUBST(AM_CFLAGS)
 
 # Checks for header files.
